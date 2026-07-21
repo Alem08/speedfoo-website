@@ -35,33 +35,55 @@ function buildDescription({ alt, category, folder }) {
   return `Speedfoo-Moment "${title}" aus der Kategorie ${category}: Einblicke in Training, Events und inklusive Community-Formate der hybriden Trendsportart.`;
 }
 
-const roots = ["Bilder", "Spielfelder", "www"];
+/** public/gallery/<subdir> -> filter folder + display category */
+const SUBDIR_META = {
+  bermuda3eck: { folder: "Bilder", category: "Bermuda3Eck  BO Open Bochum Turnier 2025" },
+  djk: { folder: "Bilder", category: "DJK" },
+  "special-olympic": { folder: "Bilder", category: "Special Olompic" },
+  "vfl-bochum": { folder: "Bilder", category: "VFL Bochum" },
+  www: { folder: "www", category: "www" },
+  spielfelder: { folder: "Spielfelder", category: "Spielfelder" },
+};
+
+const root = path.join("public", "gallery");
 const files = [];
 const usedSlugs = new Set();
 
-for (const root of roots) {
-  for (const file of walk(root)) {
-    const rel = file.split(path.sep).join("/");
-    const parts = rel.split("/");
-    const category = parts.length > 2 ? parts[1] : parts[0];
-    const alt = path.basename(file, path.extname(file)).replace(/[_]+/g, " ");
-    const src = "/" + parts.map(encodeURIComponent).join("/");
-
-    let base = slugify(`${root}-${category}-${alt}`) || slugify(path.basename(file, path.extname(file))) || "bild";
-    let slug = base;
-    let n = 2;
-    while (usedSlugs.has(slug)) {
-      slug = `${base}-${n}`;
-      n += 1;
-    }
-    usedSlugs.add(slug);
-
-    const description = buildDescription({ alt, category, folder: root });
-    files.push({ src, alt, category, folder: root, slug, description });
+for (const file of walk(root)) {
+  const rel = file.split(path.sep).join("/");
+  const parts = rel.split("/");
+  // public/gallery/<subdir>/<file>
+  const subdir = parts[2];
+  const meta = SUBDIR_META[subdir] || {
+    folder: "Bilder",
+    category: subdir,
+  };
+  const alt = path.basename(file, path.extname(file)).replace(/[-_]+/g, " ");
+  const src = "/" + parts.slice(1).join("/"); // /gallery/...
+  let base = slugify(`${meta.folder}-${subdir}-${alt}`) || slugify(alt) || "bild";
+  let slug = base;
+  let n = 2;
+  while (usedSlugs.has(slug)) {
+    slug = `${base}-${n}`;
+    n += 1;
   }
+  usedSlugs.add(slug);
+
+  files.push({
+    src,
+    alt,
+    category: meta.category,
+    folder: meta.folder,
+    slug,
+    description: buildDescription({
+      alt,
+      category: meta.category,
+      folder: meta.folder,
+    }),
+  });
 }
 
-fs.mkdirSync("src/lib", { recursive: true });
+files.sort((a, b) => a.src.localeCompare(b.src, "en"));
 
 const body = JSON.stringify(files, null, 2);
 const out = `export type GalleryImage = {
@@ -86,9 +108,10 @@ export function getGalleryImageBySlug(slug: string): GalleryImage | undefined {
 }
 `;
 
+fs.mkdirSync("src/lib", { recursive: true });
 fs.writeFileSync("src/lib/gallery.ts", out, "utf8");
 
 console.log("total", files.length);
-for (const root of roots) {
-  console.log(root, files.filter((f) => f.folder === root).length);
+for (const folder of ["Bilder", "Spielfelder", "www"]) {
+  console.log(folder, files.filter((f) => f.folder === folder).length);
 }
