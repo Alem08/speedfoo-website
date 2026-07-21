@@ -41,3 +41,8 @@ next-env.d.ts
 
 # large local media (GitHub file size limit)
 UNI Bochum.mp4
+
+# local junctions to root asset folders (Bilder/Spielfelder/www already tracked)
+/public/Bilder
+/public/Spielfelder
+/public/www

@@ -22,6 +22,7 @@ export const navLinks = [
   { href: "/inklusion", label: "Inklusion" },
   { href: "/community", label: "Community" },
   { href: "/media", label: "Media" },
+  { href: "/galerie", label: "Galerie" },
   { href: "/gruender", label: "Gründer" },
   { href: "/kontakt", label: "Kontakt" },
   { href: "/faq", label: "FAQ" },
