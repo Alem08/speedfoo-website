@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPEEDFOO × BOCHUM — One-Pager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0c0c0c;
+      --ink-2: #1a1a1a;
+      --paper: #f4f4f1;
+      --white: #ffffff;
+      --muted: #6e6e6a;
+      --line: rgba(12, 12, 12, 0.12);
+      --tower: #3aa8a0;
+      --tower-deep: #1f6f6a;
+      --grass: #2f6b3a;
+      --warm: #c45a28;
+      --winter: #3d5a73;
+      --page-w: 210mm;
+      --page-h: 297mm;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: #2a2a28;
+      color: var(--ink);
+      font-family: "Outfit", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: start center;
+      padding: 24px 16px 48px;
+    }
+
+    .toolbar {
+      width: var(--page-w);
+      max-width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      color: #cfcfc8;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .toolbar button {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: transparent;
+      color: #fff;
+      font: 500 12px/1 "Outfit", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+
+    .toolbar button:hover { background: rgba(255,255,255,0.08); }
+
+    .page {
+      width: var(--page-w);
+      height: var(--page-h);
+      background: var(--paper);
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      grid-template-rows:
+        102mm
+        28mm
+        88mm
+        26mm
+        53mm;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    }
+
+    /* ——— HERO ——— */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      isolation: isolate;
+    }
+
+    .hero__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 55% 35%;
+      transform: scale(1.04);
+    }
+
+    .hero__shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8,10,12,0.18) 0%, rgba(8,10,12,0.08) 28%, rgba(8,10,12,0.55) 68%, rgba(8,10,12,0.92) 100%),
+        linear-gradient(90deg, rgba(8,10,12,0.55) 0%, rgba(8,10,12,0.12) 42%, rgba(8,10,12,0.25) 100%);
+    }
+
+    .hero__top {
+      position: absolute;
+      top: 7mm;
+      left: 7mm;
+      right: 7mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 2;
+    }
+
+    .hero__logo {
+      height: 15mm;
+      width: auto;
+      max-width: 56mm;
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
+      padding: 1.5mm 2mm;
+      display: block;
+    }
+
+    .hero__place {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.86);
+      text-align: right;
+      line-height: 1.45;
+      padding-top: 1mm;
+    }
+
+    .hero__place span {
+      display: block;
+      color: var(--tower);
+      font-weight: 700;
+    }
+
+    .hero__title {
+      position: absolute;
+      left: 7mm;
+      right: 7mm;
+      bottom: 7mm;
+      z-index: 2;
+    }
+
+    .hero__brand {
+      display: flex;
+      align-items: baseline;
+      gap: 3.2mm;
+      flex-wrap: wrap;
+      line-height: 0.9;
+    }
+
+    .hero__brand .speed {
+      font-family: "Outfit", sans-serif;
+      font-weight: 300;
+      font-size: 15mm;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
+    }
+
+    .hero__brand .x {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 10mm;
+      letter-spacing: 0.04em;
+      color: var(--tower);
+      transform: translateY(-1mm);
+    }
+
+    .hero__brand .city {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 18mm;
+      letter-spacing: 0.02em;
+    }
+
+    .hero__sub {
+      margin-top: 2.5mm;
+      max-width: 140mm;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.35;
+    }
+
+    /* ——— SECTION SHELL ——— */
+    .section {
+      padding: 0 7mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    .kicker {
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--tower-deep);
+      margin-bottom: 2.2mm;
+    }
+
+    /* ——— ALREADY IN BOCHUM ——— */
+    .already {
+      background: var(--ink);
+      color: var(--white);
+      padding-top: 3.5mm;
+      padding-bottom: 3.5mm;
+    }
+
+    .already .kicker { color: var(--tower); }
+
+    .already__row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .already__item {
+      padding: 0 3.5mm;
+      border-left: 1px solid rgba(255,255,255,0.14);
+      min-height: 14mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .already__item:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    .already__item strong {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+      margin-bottom: 1mm;
+    }
+
+    .already__item span {
+      font-size: 9.5px;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.25;
+      font-weight: 400;
+    }
+
+    /* ——— NEXT LEVEL ——— */
+    .next {
+      padding-top: 4mm;
+      padding-bottom: 3mm;
+      background:
+        radial-gradient(120% 80% at 100% 0%, rgba(58,168,160,0.08), transparent 55%),
+        var(--paper);
+    }
+
+    .next__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3mm;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4mm;
+      isolation: isolate;
+    }
+
+    .card__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .card__veil {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .card--summer .card__veil {
+      background: linear-gradient(180deg, rgba(196,90,40,0.15) 0%, rgba(20,12,8,0.35) 35%, rgba(12,8,6,0.92) 100%);
+    }
+
+    .card--winter .card__img {
+      filter: saturate(0.55) brightness(0.82) contrast(1.08);
+    }
+
+    .card--winter .card__veil {
+      background: linear-gradient(180deg, rgba(45,78,110,0.45) 0%, rgba(10,16,24,0.55) 40%, rgba(8,12,18,0.96) 100%);
+    }
+
+    .card--rooftop .card__veil {
+      background: linear-gradient(180deg, rgba(31,111,106,0.2) 0%, rgba(8,14,14,0.42) 38%, rgba(6,10,10,0.94) 100%);
+    }
+
+    .card__season {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 1mm;
+    }
+
+    .card--summer .card__season { color: #ffb38a; }
+    .card--winter .card__season { color: #9fc0de; }
+    .card--rooftop .card__season { color: #7fd4cc; }
+
+    .card h3 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.02em;
+      line-height: 0.95;
+      margin-bottom: 1.5mm;
+    }
+
+    .card__place {
+      font-size: 10.5px;
+      font-weight: 600;
+      margin-bottom: 2.2mm;
+      opacity: 0.9;
+    }
+
+    .card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2mm;
+    }
+
+    .card__tags span {
+      font-size: 8.5px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 1.1mm 1.8mm;
+      line-height: 1;
+    }
+
+    /* ——— QUESTION ——— */
+    .question {
+      background: var(--tower);
+      color: var(--ink);
+      padding-top: 0;
+      padding-bottom: 0;
+      justify-content: center;
+    }
+
+    .question__inner {
+      display: grid;
+      grid-template-columns: 28mm 1fr;
+      gap: 4mm;
+      align-items: center;
+    }
+
+    .question__label {
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .question__text {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 17px;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+    }
+
+    /* ——— CONTACT ——— */
+    .contact {
+      background: var(--ink-2);
+      color: var(--white);
+      padding-top: 4mm;
+      padding-bottom: 4mm;
+    }
+
+    .contact .kicker { color: var(--tower); margin-bottom: 2.5mm; }
+
+    .contact__card {
+      display: grid;
+      grid-template-columns: 28mm 1fr 26mm;
+      gap: 4.5mm;
+      align-items: center;
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 3.5mm;
+      min-height: 36mm;
+    }
+
+    .contact__photo {
+      width: 28mm;
+      height: 32mm;
+      object-fit: cover;
+      object-position: 70% 20%;
+      display: block;
+    }
+
+    .contact__meta {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.4mm;
+    }
+
+    .contact__name {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.03em;
+      line-height: 1;
+    }
+
+    .contact__role {
+      font-size: 10px;
+      color: var(--tower);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1mm;
+    }
+
+    .contact__lines {
+      display: grid;
+      gap: 0.8mm;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .contact__lines a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact__brand-line {
+      margin-top: 1.5mm;
+      font-size: 9.5px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.04em;
+    }
+
+    .contact__qr {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5mm;
+    }
+
+    .contact__qr img {
+      width: 22mm;
+      height: 22mm;
+      background: #fff;
+      padding: 1mm;
+      display: block;
+    }
+
+    .contact__qr span {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      html, body {
+        background: #fff;
+        padding: 0;
+        margin: 0;
+        width: 210mm;
+        height: 297mm;
+      }
+
+      body {
+        display: block;
+      }
+
+      .toolbar { display: none !important; }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      body { padding: 12px 8px 32px; }
+      .page {
+        width: min(210mm, 100%);
+        height: auto;
+        aspect-ratio: 210 / 297;
+        grid-template-rows:
+          34.3%
+          9.4%
+          29.6%
+          8.8%
+          17.9%;
+      }
+      .toolbar { width: min(210mm, 100%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span>SPEEDFOO × BOCHUM · A4 One-Pager</span>
+    <button type="button" onclick="window.print()">Als PDF / A4 drucken</button>
+  </div>
+
+  <article class="page" aria-label="SPEEDFOO × BOCHUM One-Pager">
+    <!-- 1. VISUAL ENTRY -->
+    <header class="hero">
+      <img class="hero__img" src="assets/hero.jpg" alt="Speedfoo Action vor dem Bochumer Förderturm" />
+      <div class="hero__shade" aria-hidden="true"></div>
+
+      <div class="hero__top">
+        <img class="hero__logo" src="assets/logo-badge.png" alt="speedfoo – the speed football tennis" />
+        <div class="hero__place">
+          Deutsches Bergbau-Museum
+          <span>Bochum</span>
+        </div>
+      </div>
+
+      <div class="hero__title">
+        <div class="hero__brand">
+          <span class="speed">speedfoo</span>
+          <span class="x">×</span>
+          <span class="city">BOCHUM</span>
+        </div>
+        <p class="hero__sub">Urbaner Sport. Lokale Verankerung. Die nächste Stufe.</p>
+      </div>
+    </header>
+
+    <!-- 2. ALREADY HERE -->
+    <section class="section already">
+      <div class="kicker">01 — Speedfoo ist bereits in Bochum</div>
+      <div class="already__row">
+        <div class="already__item">
+          <strong>Westpark / Fit im Park</strong>
+          <span>Bereits aktiv</span>
+        </div>
+        <div class="already__item">
+          <strong>FC Bochum</strong>
+          <span>Partnerschaft</span>
+        </div>
+        <div class="already__item">
+          <strong>Eigene Abteilung</strong>
+          <span>Aufbau vor Ort</span>
+        </div>
+        <div class="already__item">
+          <strong>SAE Institute Bochum</strong>
+          <span>Medien &amp; Kultur</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. NEXT LEVEL -->
+    <section class="section next">
+      <div class="kicker">02 — Die nächste Stufe</div>
+      <div class="next__grid">
+        <article class="card card--summer">
+          <img class="card__img" src="assets/summer.jpg" alt="" />
+          <div class="card__veil" aria-hidden="true"></div>
+          <div class="card__season">Sommer</div>
+          <h3>Bochum Total × Speedfoo</h3>
+          <div class="card__place">Westpark</div>
+          <div class="card__tags">
+            <span>Event</span>
+            <span>Open Play</span>
+            <span>Challenge</span>
+            <span>Turnier</span>
+          </div>
+        </article>
+
+        <article class="card card--winter">
+          <img class="card__img" src="assets/winter.jpg" alt="" />
+          <div class="card__veil" aria-hidden="true"></div>
+          <div class="card__season">Winter</div>
+          <h3>Speedfoo Winter Cup</h3>
+          <div class="card__place">Bochum</div>
+          <div class="card__tags">
+            <span>Eigenes Format</span>
+            <span>Saisonal</span>
+            <span>Turnier</span>
+          </div>
+        </article>
+
+        <article class="card card--rooftop">
+          <img class="card__img" src="assets/rooftop.jpg" alt="" />
+          <div class="card__veil" aria-hidden="true"></div>
+          <div class="card__season">365 / Rooftop</div>
+          <h3>Speedfoo Rooftop</h3>
+          <div class="card__place">Bermuda3Eck</div>
+          <div class="card__tags">
+            <span>Training</span>
+            <span>Spielen</span>
+            <span>Community</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. CENTRAL QUESTION -->
+    <section class="section question">
+      <div class="question__inner">
+        <div class="question__label">03 — Zentrale Frage</div>
+        <p class="question__text">„Wie könnte Speedfoo aus deiner Sicht dauerhaft ein Teil von Bochum werden?“</p>
+      </div>
+    </section>
+
+    <!-- 5. CONTACT -->
+    <section class="section contact">
+      <div class="kicker">04 — Persönlicher Kontakt</div>
+      <div class="contact__card">
+        <img class="contact__photo" src="assets/angesom.jpg" alt="Angesom Tesfai" />
+        <div class="contact__meta">
+          <div class="contact__name">Angesom Tesfai</div>
+          <div class="contact__role">Speedfoo · Bochum</div>
+          <div class="contact__lines">
+            <a href="tel:+491777958397">+49 177 7958397</a>
+            <a href="mailto:ang.p.tesfai@email.de">ang.p.tesfai@email.de</a>
+          </div>
+          <div class="contact__brand-line">speedfoo · the speed football tennis · www.speedfoo.com</div>
+        </div>
+        <div class="contact__qr">
+          <img src="assets/qr-speedfoo-video.png" alt="QR-Code zum Speedfoo-Video" />
+          <span>Video</span>
+        </div>
+      </div>
+    </section>
+  </article>
+</body>
+</html>
