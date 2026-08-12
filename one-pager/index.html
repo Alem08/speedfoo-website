@@ -308,18 +308,6 @@
       background: linear-gradient(180deg, rgba(196,90,40,0.15) 0%, rgba(20,12,8,0.35) 35%, rgba(12,8,6,0.92) 100%);
     }
 
-    .card--winter .card__img {
-      filter: saturate(0.55) brightness(0.82) contrast(1.08);
-    }
-
-    .card--winter .card__veil {
-      background: linear-gradient(180deg, rgba(45,78,110,0.45) 0%, rgba(10,16,24,0.55) 40%, rgba(8,12,18,0.96) 100%);
-    }
-
-    .card--rooftop .card__veil {
-      background: linear-gradient(180deg, rgba(31,111,106,0.2) 0%, rgba(8,14,14,0.42) 38%, rgba(6,10,10,0.94) 100%);
-    }
-
     .card__season {
       font-family: "Bebas Neue", sans-serif;
       font-size: 18px;
@@ -329,8 +317,6 @@
     }
 
     .card--summer .card__season { color: #ffb38a; }
-    .card--winter .card__season { color: #9fc0de; }
-    .card--rooftop .card__season { color: #7fd4cc; }
 
     .card h3 {
       font-family: "Bebas Neue", sans-serif;
@@ -362,6 +348,131 @@
       padding: 1.1mm 1.8mm;
       line-height: 1;
     }
+
+    /* Future concept cards — KICK IT! poster language, no event photos */
+    .card--concept {
+      justify-content: space-between;
+      padding: 3.5mm 3.8mm 3.8mm;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .card--concept .card__veil {
+      z-index: -1;
+    }
+
+    .card--concept .card__mark {
+      position: absolute;
+      top: 3.2mm;
+      right: 3.2mm;
+      width: 11mm;
+      height: auto;
+      opacity: 0.92;
+      background: #fff;
+      padding: 0.8mm;
+      z-index: 1;
+    }
+
+    .card--concept .card__kick {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.04em;
+      line-height: 0.9;
+      margin-bottom: 2.2mm;
+    }
+
+    .card--concept h3 {
+      font-size: 19px;
+      margin-bottom: 1.2mm;
+    }
+
+    .card--concept .card__place {
+      margin-bottom: 2.8mm;
+      opacity: 0.78;
+    }
+
+    .card--concept .card__next {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 2.4mm;
+    }
+
+    .card--concept .card__body {
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+    }
+
+    .card--winter {
+      background: #0d141c;
+    }
+
+    .card--winter .card__veil {
+      background:
+        linear-gradient(155deg, rgba(120,160,190,0.16) 0%, transparent 42%),
+        linear-gradient(180deg, rgba(18,28,40,0.2) 0%, rgba(8,12,18,0.15) 100%);
+    }
+
+    .card--winter .card__veil::before {
+      content: "";
+      position: absolute;
+      left: -18%;
+      top: 18%;
+      width: 140%;
+      height: 1px;
+      background: rgba(159,192,222,0.28);
+      transform: rotate(-18deg);
+    }
+
+    .card--winter .card__veil::after {
+      content: "";
+      position: absolute;
+      left: -10%;
+      top: 34%;
+      width: 130%;
+      height: 1px;
+      background: rgba(159,192,222,0.14);
+      transform: rotate(-18deg);
+    }
+
+    .card--winter .card__kick { color: #9fc0de; }
+    .card--winter .card__next { color: #9fc0de; }
+
+    .card--rooftop {
+      background: #0a1211;
+    }
+
+    .card--rooftop .card__veil {
+      background:
+        linear-gradient(205deg, rgba(58,168,160,0.18) 0%, transparent 46%),
+        linear-gradient(180deg, rgba(12,24,22,0.15) 0%, rgba(6,10,10,0.2) 100%);
+    }
+
+    .card--rooftop .card__veil::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 42%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(58,168,160,0.12), transparent 70%);
+      clip-path: polygon(35% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .card--rooftop .card__veil::after {
+      content: "";
+      position: absolute;
+      left: 3.8mm;
+      top: 18mm;
+      width: 18mm;
+      height: 18mm;
+      border: 1px solid rgba(127,212,204,0.28);
+      border-radius: 1px;
+    }
+
+    .card--rooftop .card__kick { color: #7fd4cc; }
+    .card--rooftop .card__next { color: #7fd4cc; }
 
     /* ——— QUESTION ——— */
     .question {
@@ -621,29 +732,35 @@
           </div>
         </article>
 
-        <article class="card card--winter">
-          <img class="card__img" src="assets/winter.jpg" alt="" />
+        <article class="card card--concept card--winter">
+          <img class="card__mark" src="assets/logo-badge.png" alt="" />
           <div class="card__veil" aria-hidden="true"></div>
-          <div class="card__season">Winter</div>
-          <h3>Speedfoo Winter Cup</h3>
-          <div class="card__place">Bochum</div>
-          <div class="card__tags">
-            <span>Eigenes Format</span>
-            <span>Saisonal</span>
-            <span>Turnier</span>
+          <div class="card__body">
+            <div class="card__kick">KICK IT!</div>
+            <h3>Speedfoo Winter Cup</h3>
+            <div class="card__place">Bochum</div>
+            <div class="card__next">Next Move: Bochum</div>
+            <div class="card__tags">
+              <span>Eigenes Format</span>
+              <span>Saisonal</span>
+              <span>Turnier</span>
+            </div>
           </div>
         </article>
 
-        <article class="card card--rooftop">
-          <img class="card__img" src="assets/rooftop.jpg" alt="" />
+        <article class="card card--concept card--rooftop">
+          <img class="card__mark" src="assets/logo-badge.png" alt="" />
           <div class="card__veil" aria-hidden="true"></div>
-          <div class="card__season">DAUERHAFT / ROOFTOP</div>
-          <h3>Speedfoo Rooftop</h3>
-          <div class="card__place">Bermuda3Eck</div>
-          <div class="card__tags">
-            <span>Training</span>
-            <span>Spielen</span>
-            <span>Community</span>
+          <div class="card__body">
+            <div class="card__kick">KICK IT!</div>
+            <h3>Speedfoo Rooftop</h3>
+            <div class="card__place">Bermuda3Eck</div>
+            <div class="card__next">Next Move: Bochum</div>
+            <div class="card__tags">
+              <span>Training</span>
+              <span>Spielen</span>
+              <span>Community</span>
+            </div>
           </div>
         </article>
       </div>
